@@ -1,180 +1,109 @@
-import { StatusBar } from "expo-status-bar";
-import {
-  Button,
-  Dimensions,
-  StyleSheet,
-  Text,
-  TextInput,
-  TouchableOpacity,
-  View,
-  TouchableHighlight,
-  Image,
-} from "react-native";
-// import login from "/assets/login";
+import { StatusBar } from 'expo-status-bar';
+import { StyleSheet, Text, View } from 'react-native';
+import { Calendar } from 'react-native-calendars';
 
-const { width, height } = Dimensions.get("screen");
 export default function App() {
   return (
-    // Body
     <View style={styles.container}>
-      {/* <StatusBar style="auto" /> */}
-
-      {/* logo or Image */}
-      <View
-        style={{
-          backgroundColor: "white",
-          width: "100%",
-          height: "30%",
-          alignItems: "center",
-          justifyContent: "center",
-          marginTop: 30,
-        }}
-      >
-        <Image
-          source={require("./assets/login.png")}
-          style={{ height: "100%", width: "80%" }}
-        ></Image>
+      <View style={styles.dateselected}>
+      <Text style={{
+        margin:15,
+        fontSize:16,
+      }}>Selected Date:
+      </Text>
+      <Text style={{
+        margin:15,
+        fontSize:16,
+      }}>
+        01/08/2023
+      </Text>
       </View>
-      {/* inputs div */}
-      <View
-        style={{
-          width: "100%",
-          height: "65%",
-          display: "flex",
-          justifyContent: "center",
-          alignItems: "center",
-          gap: 40,
-          backgroundColor: "cadetblue",
-        }}
-      >
-        {/* Employeeid input */}
-        <TextInput
-          style={{
-            borderColor: "grey",
-            borderWidth: 1,
-            width: "80%",
-            height: "9%",
-            borderRadius: 10,
-            backgroundColor: "white",
-            paddingLeft: 20,
-            marginTop: -60,
-          }}
-          placeholder="Employee ID"
-        ></TextInput>
-        {/* passwords  */}
-        <View
-          style={{
-            width: "70%",
-            height: "8%",
-            display: "flex",
-            flexDirection: "row",
-            justifyContent: "center",
-            alignItems: "center",
-            gap: 20,
-          }}
-        >
-          <TextInput
-            style={{
-              borderColor: "grey",
-              borderWidth: 1,
-              width: "15%",
-              height: "100%",
-              borderRadius: 10,
-              backgroundColor: "white",
-              padding: 10,
-            }}
-            placeholder=""
-          ></TextInput>
-
-          <TextInput
-            style={{
-              borderColor: "grey",
-              borderWidth: 1,
-              width: "15%",
-              height: "100%",
-              borderRadius: 10,
-              backgroundColor: "white",
-              padding: 10,
-            }}
-            placeholder=""
-          ></TextInput>
-
-          <TextInput
-            style={{
-              borderColor: "grey",
-              borderWidth: 1,
-              width: "15%",
-              height: "100%",
-              borderRadius: 10,
-              backgroundColor: "white",
-              padding: 10,
-            }}
-            placeholder=""
-          ></TextInput>
-
-          <TextInput
-            style={{
-              borderColor: "grey",
-              borderWidth: 1,
-              width: "15%",
-              height: "100%",
-              borderRadius: 10,
-              backgroundColor: "white",
-              padding: 10,
-            }}
-            placeholder=""
-          ></TextInput>
+      <Calendar style={styles.calender}/>
+      <View style={styles.card}>
+        <View style={styles.punchInOut}>
+        <View style={{
+          alignItems:'center',
+          justifyContent:'center',
+          borderRightColor :'grey',
+          borderRightWidth:1,
+          width:'50%',
+          height:'100%'}}>
+            <Text style={styles.font}>Punch-In</Text>
+            <Text style={styles.font}>09:40 AM</Text>
         </View>
-        <Text style={{ color: "white", textDecorationLine: "underline" }}>
-          Forget Password?
-        </Text>
-
-        {/* submit button */}
-
-        <TouchableOpacity
-          style={{
-            borderColor: "white",
-            borderWidth: 1,
-            width: "50%",
-            height: "8%",
-            borderRadius: 10,
-            backgroundColor: "cadetblue",
-            padding: 10,
-            alignItems: "center",
-            marginTop: 50,
-          }}
-        >
-          <Text style={{ color: "white" }}>Login</Text>
-        </TouchableOpacity>
-        <TouchableOpacity
-          style={{
-            borderColor: "transparent",
-            borderWidth: 1,
-            width: "50%",
-            height: "8%",
-            borderRadius: 10,
-            backgroundColor: "white",
-            padding: 10,
-            alignItems: "center",
-            marginTop: -20,
-          }}
-        >
-          <Text style={{ color: "cadetblue" }}>Signup</Text>
-        </TouchableOpacity>
+        <View style={{
+          width:'50%',
+          alignItems:'center',
+          justifyContent:'center',
+          height:'100%'}}>
+            <Text style={styles.font}>Punch-out</Text>
+            <Text style={styles.font}>06:10 PM</Text>
+        </View>  
+        </View>
+        <View style={styles.punchInOut}>
+        <View style={{
+          alignItems:'center',
+          justifyContent:'center',
+          borderRightColor :'grey',
+          borderRightWidth:1,
+          width:'50%',
+          height:'100%'}}>
+            <Text style={styles.font}>Office-In Time</Text>
+            <Text style={styles.font}>09:00 AM</Text>
+        </View>
+        <View style={{
+          width:'50%',
+          alignItems:'center',
+          justifyContent:'center',
+          height:'100%'}}>
+            <Text style={styles.font}>Office-Out Time</Text>
+            <Text style={styles.font}>6:00 PM</Text>
+        </View>
+          
+        </View>
       </View>
+      <StatusBar style="auto" />
     </View>
   );
 }
 
 const styles = StyleSheet.create({
   container: {
-    height: height,
-    width: width,
-    flexDirection: "column",
-    backgroundColor: "white",
-    justifyContent: "space-between",
-    // flexWrap:"wrap",
-    alignItems: "center",
-    // padding:10
+    flex: 1,
+    backgroundColor: '#5F9EA0',
+    alignItems: 'center',
   },
+  calender:{
+   marginTop:20,
+   width:300,
+   borderRadius:10,
+   elevation:10,
+  },
+  card:{
+   width:300,
+   height:200,
+   marginTop:30,
+   backgroundColor:'white',
+   borderRadius:10,
+   elevation:10,
+  },
+  punchInOut:{
+    flexDirection:'row',
+    margin:10,
+    height:'40%',
+  },
+  font:{
+    fontSize:17,
+    padding:3,
+  },
+  dateselected:{
+    backgroundColor:'white',
+    width:300,
+    marginTop:30,
+    height:50,
+    borderRadius:10,
+    flexDirection:'row',
+    justifyContent:'space-between'
+  }
+
 });
