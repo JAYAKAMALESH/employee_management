@@ -2,7 +2,11 @@ import { StatusBar } from 'expo-status-bar';
 import { StyleSheet, Text, View } from 'react-native';
 import { Calendar } from 'react-native-calendars';
 
-export default function App() {
+export default function App(props) {
+  const marked = {
+    '2023-08-01': { marked: true },
+    '2023-08-01': { selected: true }
+  };
   return (
     <View style={styles.container}>
       <View style={styles.dateselected}>
@@ -18,7 +22,9 @@ export default function App() {
         01/08/2023
       </Text>
       </View>
-      <Calendar style={styles.calender}/>
+      <Calendar style={styles.calender} 
+       markedDates={marked}
+       {...props}/>
       <View style={styles.card}>
         <View style={styles.punchInOut}>
         <View style={{
